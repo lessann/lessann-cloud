@@ -1,0 +1,14 @@
+server:
+  port: 21120
+spring:
+  application:
+    name: lessann-cloud-server
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:21120/eureka
+#    register-with-eureka: false
+#    fetch-registry: false
+logging:
+  level:
+    cn.lessann.cloud: debug
