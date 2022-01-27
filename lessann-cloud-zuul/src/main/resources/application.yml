@@ -1,0 +1,35 @@
+server:
+  port: 21127
+spring:
+  application:
+    name: lessann-cloud-zuul
+#zuul:
+#  routes:
+#    lessann-cloud-user: # 这里是路由id，随意写
+#      path: /** # 这里是映射路径
+#      url: lessann-cloud-user # 映射路径对应的实际url地址
+zuul:
+  routes:
+    lessann-cloud-user: /** # 服务名: 路径名
+  prefix: /api # 网关请求前缀,请求网关前项目需要添加的路径名
+#  ignored-services:
+#    - 被禁用的服务
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:21120/eureka
+      prefer-ip-address: true
+      ip-address: 127.0.0.1
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 6000
+ribbon:
+  ConnectTimeout: 1000 # ribbon链接超时时长
+  ReadTimeout: 2000 # ribbon读取超时时长
+  MaxAutoRetries: 0 # 当前服务重试次数
+  MaxAutoRetriesNextServer: 1 # 切换服务重试次数
+  OkToRetryOnAllOperations: false # 是否对所有的请求方式都重试，只对get请求重试
