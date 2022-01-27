@@ -1,8 +1,8 @@
 server:
-  port: 21124
+  port: 21126
 spring:
   application:
-    name: lessann-cloud-user
+    name: lessann-cloud-article
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.jdbc.Driver
@@ -55,6 +55,11 @@ lessann-cloud-attachment: # 指定服务添加负载策略
 ribbon:
   eager-load: # 开启饥饿加载
     enabled: true
+  ReadTimeout: 2000 # 读取超时时长
+  ConnectTimeout: 1000 # 建立链接的超时时长
+  MaxAutoRetries: 3 # 当前服务器的重试次数
+  MaxAutoRetriesNextServer: 3 # 重试多少次服务
+  OkToRetryOnAllOperations: true # 是否对所有的请求方式都重试
 hystrix:
   command:
     default:
@@ -66,3 +71,11 @@ circuitBreaker:
   requestVolumeThreshold: 10 # 最小请求次数，默认20
   sleepWindowInMilliseconds: 10000 #休眠时长，默认5秒
   errorThresholdPercentage: 50 # 失败占比，默认50%
+feign:
+  compression:
+    request:
+      enabled: true # 开启请求压缩
+      mime-types: text/html,application/xml,application/json # 设置压缩的数据类型
+      min-request-size: 2048 # 设置触发压缩的大小下限
+    response:
+      enabled: true # 开启响应压缩

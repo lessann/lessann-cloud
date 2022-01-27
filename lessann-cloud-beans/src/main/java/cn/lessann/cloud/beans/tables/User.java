@@ -2,6 +2,8 @@ package cn.lessann.cloud.beans.tables;
 
 import cn.lessann.cloud.beans.Base;
 
+import java.io.Serializable;
+
 /**
  * TODO
  *
@@ -9,14 +11,17 @@ import cn.lessann.cloud.beans.Base;
  * @version 1.0
  * @date 2022/1/26 3:22 下午
  */
-public class User extends Base {
+public class User extends Base implements Serializable {
 
-    private String userName;
+    private static final long serialVersionUID = -4506066734109455300L;
+
     private String name;
+    private String userName;
     private String password;
     private String email;
     private String phone;
     private String image;
+    private String code;
 
     public String getUserName() {
         return userName;
@@ -64,5 +69,13 @@ public class User extends Base {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 }

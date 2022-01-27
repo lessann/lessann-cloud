@@ -9,8 +9,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>cn.lessann.cloud.user</groupId>
-    <artifactId>lessann-cloud-user</artifactId>
+    <groupId>cn.lessann.cloud.article</groupId>
+    <artifactId>lessann-cloud-article</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -26,6 +26,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-logging</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
 
         <dependency>

@@ -1,8 +1,8 @@
 server:
-  port: 21124
+  port: 21125
 spring:
   application:
-    name: lessann-cloud-user
+    name: lessann-cloud-attachment
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.jdbc.Driver
@@ -49,20 +49,3 @@ logging:
     cn.lessann.cloud: debug
   pattern:
     dateformat: YY-MM-dd HH:mm:ss
-lessann-cloud-attachment: # 指定服务添加负载策略
-  ribbon:
-    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
-ribbon:
-  eager-load: # 开启饥饿加载
-    enabled: true
-hystrix:
-  command:
-    default:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 4000 # 超时时长，触发降级
-circuitBreaker:
-  requestVolumeThreshold: 10 # 最小请求次数，默认20
-  sleepWindowInMilliseconds: 10000 #休眠时长，默认5秒
-  errorThresholdPercentage: 50 # 失败占比，默认50%

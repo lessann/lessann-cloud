@@ -1,8 +1,14 @@
 package cn.lessann.cloud.user.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import cn.lessann.cloud.beans.http.Message;
+import cn.lessann.cloud.beans.tables.User;
+import cn.lessann.cloud.user.server.UserService;
+import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * TODO
@@ -13,8 +19,32 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/user")
+@DefaultProperties(defaultFallback = "errorResponse")
 public class UserController {
 
-    @GetMapping("/login")
-    public
+    @Autowired
+    UserService userService;
+
+    @GetMapping("/list")
+    public Message list() {
+        List<User> allUser = userService.getAllUser();
+        return new Message("all user list", allUser);
+    }
+
+    @PostMapping
+    public Message register(User user) {
+        if (userService.userRegister(user)) {
+            return new Message("success");
+        }
+        return new Message("register error", false);
+    }
+
+    @PutMapping
+    public Message updateUser(User user) {
+        return null;
+    }
+
+    public Message errorResponse(int id) {
+        return new Message("目前比较拥挤，稍后再试！");
+    }
 }

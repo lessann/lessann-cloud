@@ -1,5 +1,7 @@
 package cn.lessann.cloud.beans.http;
 
+import java.io.Serializable;
+
 /**
  * TODO
  *
@@ -7,7 +9,9 @@ package cn.lessann.cloud.beans.http;
  * @version 1.0
  * @date 2022/1/26 3:16 下午
  */
-public class Message {
+public class Message implements Serializable {
+
+    private static final long serialVersionUID = 679153629456930345L;
 
     private String msg;
     private boolean err;
