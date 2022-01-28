@@ -1,5 +1,8 @@
 package cn.lessann.cloud.beans;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+
 import java.util.Date;
 
 /**
@@ -11,6 +14,7 @@ import java.util.Date;
  */
 public abstract class Base {
 
+    @TableId(type = IdType.AUTO)
     protected int id;
     protected Date createTime;
     protected Date updateTime;

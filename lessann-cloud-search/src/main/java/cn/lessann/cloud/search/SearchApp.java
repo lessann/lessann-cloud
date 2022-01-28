@@ -1,20 +1,20 @@
-package cn.lessann.cloud.zuul;
+package cn.lessann.cloud.search;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.cloud.client.SpringCloudApplication;
-import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
  * TODO
  *
  * @author LessAnn
  * @version 1.0
- * @date 2022/1/27 2:10 下午
+ * @date 2022/1/27 9:11 下午
  */
-@EnableZuulProxy
+@EnableFeignClients
 @SpringCloudApplication
-public class ZuulApp {
+public class SearchApp {
     public static void main(String[] args) {
-        SpringApplication.run(ZuulApp.class, args);
+        SpringApplication.run(SearchApp.class, args);
     }
 }

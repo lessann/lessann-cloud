@@ -14,6 +14,7 @@
         <module>lessann-cloud-attachment</module>
         <module>lessann-cloud-article</module>
         <module>lessann-cloud-zuul</module>
+        <module>lessann-cloud-search</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -31,8 +32,9 @@
         <java.version>1.8</java.version>
         <spring-cloud.version>Hoxton.SR10</spring-cloud.version>
         <mysql.connector>5.1.47</mysql.connector>
-        <mybatis.starter>2.2.0</mybatis.starter>
+        <mybatis.plus.starter>3.5.0</mybatis.plus.starter>
         <druid.starter>1.2.6</druid.starter>
+        <swagger.starter.version>2.0.0.RELEASE</swagger.starter.version>
     </properties>
 
     <dependencyManagement>
@@ -46,11 +48,11 @@
                 <scope>import</scope>
             </dependency>
 
-            <!--mybatis-->
+            <!--mybatis-plus-->
             <dependency>
-                <groupId>org.mybatis.spring.boot</groupId>
-                <artifactId>mybatis-spring-boot-starter</artifactId>
-                <version>${mybatis.starter}</version>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis.plus.starter}</version>
             </dependency>
 
             <!--alibaba-druid线程池相关依赖-->

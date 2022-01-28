@@ -36,4 +36,12 @@ public interface UserService {
      */
     boolean userRegister(User user);
 
+    /**
+     * 根据用户id获得用户内容
+     *
+     * @param id 用户唯一表示
+     * @return 用户详细内容对象
+     */
+    User getUserById(int id);
+
 }

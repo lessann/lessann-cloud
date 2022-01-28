@@ -4,8 +4,9 @@ import cn.lessann.cloud.beans.http.Message;
 import cn.lessann.cloud.beans.tables.User;
 import cn.lessann.cloud.user.server.UserService;
 import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -42,6 +43,12 @@ public class UserController {
     @PutMapping
     public Message updateUser(User user) {
         return null;
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<User> getUser(@PathVariable int id) {
+        User user = userService.getUserById(id);
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
     public Message errorResponse(int id) {

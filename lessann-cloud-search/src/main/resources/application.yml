@@ -1,0 +1,9 @@
+server:
+  port: 21128
+spring:
+  application:
+    name: lessann-cloud-search
+eureka:
+  client:
+    service-url:
+      defaultZoe: http://127.0.0.1:21120/eureka
