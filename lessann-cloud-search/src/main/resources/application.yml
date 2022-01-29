@@ -3,7 +3,17 @@ server:
 spring:
   application:
     name: lessann-cloud-search
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/lessann_cloud?serverTimezone=UTC&rewriteBatchedStatements=true&zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: root
+  data:
+    cluster-name: docker-cluster
+    cluster-nodes: 127.0.0.1:9300
 eureka:
   client:
     service-url:
-      defaultZoe: http://127.0.0.1:21120/eureka
+      defaultZone: http://127.0.0.1:21120/eureka
+
