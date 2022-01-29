@@ -23,7 +23,7 @@ public interface UserDao extends BaseMapper<User> {
      *
      * @return 所有用户集合
      */
-    @Select("select * from User;")
+    @Select("select * from user;")
     List<User> getAllUser();
 
 
@@ -32,7 +32,7 @@ public interface UserDao extends BaseMapper<User> {
      *
      * @param user 需要查询用户信息
      */
-    @Select("select * from User where name = #{name} and password = #{password} and status = 1")
+    @Select("select * from user where name = #{name} and password = #{password} and status = 1")
     User getUserByPasswordAndName(User user);
 
     /**
@@ -40,6 +40,6 @@ public interface UserDao extends BaseMapper<User> {
      *
      * @param user 用户信息
      */
-    @Insert("insert into User(`userName`, `password`, `email`) value(#{userName}, #{password}, #{email})")
+    @Insert("insert into user(`userName`, `password`, `email`) value(#{userName}, #{password}, #{email})")
     void insertUser(User user);
 }
