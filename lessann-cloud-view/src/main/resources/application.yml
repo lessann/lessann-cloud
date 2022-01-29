@@ -1,0 +1,19 @@
+server:
+  port: 21129
+spring:
+  application:
+    name: lessann-cloud-view
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/lessann_cloud?serverTimezone=UTC&rewriteBatchedStatements=true&zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: root
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:21120/eureka
+logging:
+  level:
+    cn.lessann.cloud: debug
+  pattern:
+    dateformat: YY-MM-dd HH:mm:ss
