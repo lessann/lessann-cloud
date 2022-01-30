@@ -66,3 +66,7 @@ circuitBreaker:
   requestVolumeThreshold: 10 # 最小请求次数，默认20
   sleepWindowInMilliseconds: 10000 #休眠时长，默认5秒
   errorThresholdPercentage: 50 # 失败占比，默认50%
+lessann:
+  encoder:
+    secret: ${random.uuid}
+    length: 10

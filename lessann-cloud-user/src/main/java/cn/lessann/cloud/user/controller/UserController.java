@@ -7,9 +7,14 @@ import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * TODO
@@ -26,6 +31,9 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    BCryptPasswordEncoder bCryptPasswordEncoder;
+
     @GetMapping("/list")
     public Message list() {
         List<User> allUser = userService.getAllUser();
@@ -33,7 +41,17 @@ public class UserController {
     }
 
     @PostMapping
-    public Message register(User user) {
+    public Message register(@Valid User user, BindingResult result) {
+        if (result.hasErrors()) {
+            String msg = result.getFieldErrors().stream().map(FieldError::getDefaultMessage)
+                    .collect(Collectors.joining("|"));
+            return new Message(msg, false);
+        }
+
+        if (user != null) {
+            user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        }
+
         if (userService.userRegister(user)) {
             return new Message("success");
         }

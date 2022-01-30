@@ -17,7 +17,6 @@ import java.util.List;
  * @date 2022/1/26 4:12 下午
  */
 @Service
-@Transactional(rollbackFor = {Exception.class})
 public class UserServiceImpl implements UserService {
 
     @Autowired
@@ -38,8 +37,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional(rollbackFor = {Exception.class})
     public boolean userRegister(User user) {
-        return false;
+        userDao.insert(user);
+        return true;
     }
 
     @Override
