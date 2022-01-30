@@ -1,4 +1,4 @@
-package cn.lessann.cloud.article;
+package cn.lessann.cloud;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.cloud.client.SpringCloudApplication;
