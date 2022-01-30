@@ -3,6 +3,7 @@ package cn.lessann.cloud.view.controller;
 import cn.lessann.cloud.api.user.UserApi;
 import cn.lessann.cloud.beans.http.Message;
 import cn.lessann.cloud.beans.tables.User;
+import cn.lessann.cloud.view.server.StaticPageServer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -31,6 +32,9 @@ public class ViewController {
     @Autowired
     UserApi userApi;
 
+    @Autowired
+    StaticPageServer staticPageServer;
+
     @GetMapping
     @ResponseBody
     public ResponseEntity<Message> getUser() {
@@ -45,6 +49,15 @@ public class ViewController {
         List<User> list = (List<User>) message.getObj();
         model.addAttribute("article", list.get(0));
         return "item";
+    }
+
+    @GetMapping("/static")
+    public void staticPage() {
+        try {
+            staticPageServer.createItemHtml();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

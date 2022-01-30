@@ -17,3 +17,6 @@ logging:
     cn.lessann.cloud: debug
   pattern:
     dateformat: YY-MM-dd HH:mm:ss
+lessann:
+  static:
+    user-dir: /user
