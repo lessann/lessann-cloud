@@ -8,6 +8,12 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/lessann_cloud?serverTimezone=UTC&rewriteBatchedStatements=true&zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=UTF-8
     username: root
     password: root
+  rabbitmq:
+    virtual-host: /lessann
+    username: lessann
+    password: lessann
+    host: 127.0.0.1
+    port: 5673
 eureka:
   client:
     service-url:

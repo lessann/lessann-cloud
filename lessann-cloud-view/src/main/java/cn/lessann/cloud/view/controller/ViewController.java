@@ -5,6 +5,7 @@ import cn.lessann.cloud.beans.http.Message;
 import cn.lessann.cloud.beans.tables.User;
 import cn.lessann.cloud.view.server.StaticPageServer;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,6 +36,9 @@ public class ViewController {
     @Autowired
     StaticPageServer staticPageServer;
 
+    @Autowired
+    AmqpTemplate amqpTemplate;
+
     @GetMapping
     @ResponseBody
     public ResponseEntity<Message> getUser() {
@@ -58,6 +62,12 @@ public class ViewController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @ResponseBody
+    @GetMapping("/sendMsg")
+    public void sendMsg() {
+        amqpTemplate.convertAndSend("lessann.cloud.exchange", "a.b", "Hello RabbitMq!");
     }
 
 }
